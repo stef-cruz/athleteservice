@@ -28,12 +28,21 @@ module AthleteService
           audience: 'https://athletedataservice.thesportsoffice.com'
         }
       end
-      response_json = JSON.parse(response&.body || {})
-      api_token = response_json['access_token']
-      byebug
+      response_body = JSON.parse(response&.body || {})
+      api_token = response_body['access_token']
     end
 
     def get_data
+      # get token calling the previous function
+      jwt_token = get_token
+      conn = Faraday.new(url:'https://athletedataservice.azurewebsites.net',
+                         headers: {'Content-Type' => 'application/json'})
+      response = conn.get('/summary') do |req|
+        req.headers = {
+          "Authorization" => "Bearer #{jwt_token}"
+        }
+      end
+      data = JSON.parse(response&.body || {})
     end
   end
 end
