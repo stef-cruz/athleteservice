@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('faraday', '~> 1.7')
   # faraday_middleware converts json into ruby hash automatically. No need to write json.parse
   spec.add_development_dependency('faraday_middleware', '~> 1.1')
+  spec.add_development_dependency('byebug')
 end

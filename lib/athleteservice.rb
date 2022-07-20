@@ -1,6 +1,8 @@
 require "athleteservice/version"
 
-module Athleteservice
-  class Error < StandardError; end
-  # Your code goes here...
+module AthleteService
+  module Client
+    autoload :Client, "athleteservice/client"
+    autoload :Error, "athleteservice/error"
+  end
 end

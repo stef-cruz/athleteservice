@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Instantiate the class:  
+client = AthleteService::Client.new  
+
+Call methods:  
+client.get_token
 
 ## Development
 
@@ -30,9 +34,20 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+## Debugging/Testing with IRB
+
+- Type `irb` in the console
+- Load the file you want to debug e.g. `load './lib/athleteservice/client.rb'`. Note: you have to load the file for every change you make to the file
+
+If you want to debug:
+- Add `byebug` to your gemspec file
+- Run `bundle install` to install the gem
+- Add `require 'byebug'` to the top of the file you want to debug
+- Comment `byebug` anywhere you want the debugger to stop
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/athleteservice.
+Bug reports and pull requests are welcome on GitHub at https://github.com/stef-cruz/athleteservice.
 
 
 ## License
