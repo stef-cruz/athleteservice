@@ -32,7 +32,6 @@ module Kitman
         ) do |faraday|
           faraday.response(:logger, ::Logger.new($stdout), bodies: true)
         end
-        conn
       end
     end
   end
