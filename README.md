@@ -1,9 +1,9 @@
-# Athleteservice
+# Athlete Service
 
 Gem to get data from AthleteService API.
 
 ```ruby
-    client = AthleteService::Client.new(
+    client = Kitman::AthleteService::Client.new(
          client_id: 'CLIENT_ID',
          client_secret: 'CLIENT_SECRET'
     )
@@ -29,7 +29,7 @@ Or install it yourself as:
 ## Debugging/Testing with IRB
 
 - Type `irb` in the console
-- Load the file you want to debug e.g. `load './lib/athleteservice/client.rb'`. Note: you have to load the file for every change you make to the file
+- Load the file you want to debug e.g. `load './lib/kitman/athleteservice/client.rb'`. Note: you have to load the file for every change you make to the file
 
 If you want to debug:
 - Add `byebug` to your gemspec file
