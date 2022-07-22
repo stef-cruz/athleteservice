@@ -11,7 +11,8 @@ module Kitman
           connect_to_api = connection
           response = connect_to_api.get('/summary')
           if response.status != 200
-            puts "Failed to connect to the API. Response status: #{response.status}. Reason: #{response.body}"
+            puts "Failed to connect to the API. Response status: #{response.status}."
+            JSON.parse(response&.body || {})
           else
             JSON.parse(response&.body || {})
           end

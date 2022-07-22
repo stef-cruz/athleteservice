@@ -55,26 +55,52 @@ RSpec.describe(::Kitman::AthleteService::Client) do
 
   end
 
-  describe('Test #all_athletes - Successfully fetching data from API')  do
-    subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
+  context('Tests #all_athletes')  do
+    describe('Test #all_athletes - Successfully fetching data from API')  do
+      subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
 
-    before do
-      WebMock.stub_request(:get, "https://athletedataservice.azurewebsites.net/summary")
-             .with(
-               headers: {
-                 "Authorization" => "Bearer #{access_token}",
-                 'Accept' => '*/*',
-                 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                 'Content-Type' => 'application/json',
-                 'User-Agent' => 'Faraday v1.10.0'
-               }
-             )
-             .to_return(status: 200, body: File.read(argument_file), headers: {})
+      before do
+        WebMock.stub_request(:get, "https://athletedataservice.azurewebsites.net/summary")
+               .with(
+                 headers: {
+                   "Authorization" => "Bearer #{access_token}",
+                   'Accept' => '*/*',
+                   'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                   'Content-Type' => 'application/json',
+                   'User-Agent' => 'Faraday v1.10.0'
+                 }
+               )
+               .to_return(status: 200, body: File.read(argument_file), headers: {})
+      end
+
+      it("Get data from the API") do
+        response = client.all_athletes
+        expect(response.length).to be > 0
+      end
     end
 
-    it("Get data from the API") do
-      response = client.all_athletes
-      expect(response.length).to be > 0
+    describe('Test #all_athletes - Failing to fetch data from API')  do
+      subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
+
+      before do
+        WebMock.stub_request(:get, "https://athletedataservice.azurewebsites.net/summary")
+               .with(
+                 headers: {
+                   "Authorization" => "Bearer #{access_token}",
+                   'Accept' => '*/*',
+                   'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                   'Content-Type' => 'application/json',
+                   'User-Agent' => 'Faraday v1.10.0'
+                 }
+               )
+               .to_return(status: 401, body: response_401, headers: {})
+      end
+
+      it("Fail to get data from the API") do
+        response = client.all_athletes
+        expect(response['success']).to eq(false)
+        expect(response['code']).to eq(401)
+      end
     end
   end
 
