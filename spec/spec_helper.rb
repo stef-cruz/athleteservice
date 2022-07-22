@@ -1,5 +1,14 @@
 require "bundler/setup"
-require "athleteservice"
+require "webmock/rspec"
+require "simplecov"
+
+SimpleCov.start do
+  coverage_dir(File.join('..', '..', '..', ENV['CIRCLE_ARTIFACTS'], 'coverage')) if ENV['CIRCLE_ARTIFACTS']
+  minimum_coverage(100)
+  add_filter('/spec/')
+  # add_group('Lib', 'lib')
+  # track_files("**/*.rb")
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

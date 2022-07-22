@@ -17,8 +17,12 @@ module Kitman
       attr_reader(:client_id, :client_secret)
 
       def initialize(client_id:, client_secret:)
-        @client_id = client_id
-        @client_secret = client_secret
+        if client_id.empty? || client_secret.empty?
+          raise Exception.new "Please ensure credentials are correct."
+        else
+          @client_id = client_id
+          @client_secret = client_secret
+        end
       end
 
     end

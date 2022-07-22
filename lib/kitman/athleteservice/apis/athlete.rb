@@ -8,12 +8,16 @@ module Kitman
         # 3. Call all_athletes method in client class, i.e. client.all_athletes
 
         def all_athletes
-          conn = connection
-          response = conn.get('/summary')
-          JSON.parse(response.body)
+          connect_to_api = connection
+          response = connect_to_api.get('/summary')
+          if response.status != 200
+            puts "Failed to connect to the API. Response status: #{response.status}. Reason: #{response.body}"
+          else
+            JSON.parse(response&.body || {})
+          end
         end
 
-        def get_by_athlete(athlete_name)
+        def get_by_athlete_name(athlete_name)
           data = all_athletes
           data.select {|i| i['athlete'] == athlete_name}
         end
