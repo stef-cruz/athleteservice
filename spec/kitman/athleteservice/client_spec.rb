@@ -9,7 +9,7 @@ RSpec.describe(::Kitman::AthleteService::Client) do
   let(:argument_file) { 'spec/fixtures/data_sample.json' }
   let(:expected_body) { JSON.parse(File.read(argument_file)) }
 
-  let(:post_response_200) do
+  let(:response_200) do
     {
       success: true,
       code: 200,
@@ -18,12 +18,11 @@ RSpec.describe(::Kitman::AthleteService::Client) do
     }.to_json
   end
 
-  let(:post_response_400) do
+  let(:response_401) do
     {
       success: false,
       code: 401,
-      error: "Access denied",
-      access_token: access_token
+      error: "Access denied"
     }.to_json
   end
 
@@ -38,10 +37,10 @@ RSpec.describe(::Kitman::AthleteService::Client) do
           'User-Agent' => 'Faraday v1.10.0'
         }
       )
-      .to_return(status: 200, body: post_response_200, headers: {})
+      .to_return(status: 200, body: response_200, headers: {})
   end
 
-  describe('Test #initialize method') do
+  describe('Test #initialize') do
     subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
     subject(:client_missing_credentials) { described_class.new(client_id: '', client_secret: '') }
 
@@ -56,7 +55,7 @@ RSpec.describe(::Kitman::AthleteService::Client) do
 
   end
 
-  describe('Test #all_athletes method')  do
+  describe('Test #all_athletes - Successfully fetching data from API')  do
     subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
 
     before do
@@ -100,6 +99,29 @@ RSpec.describe(::Kitman::AthleteService::Client) do
       athlete_name = 'Athlete 1'
       response = client.get_by_athlete_name(athlete_name)
       expect(response[0]['athlete']).to eq(athlete_name)
+    end
+  end
+
+  describe('Test #get_all_data_with_average_summary') do
+    subject(:client) { described_class.new(client_id: client_id, client_secret: client_secret) }
+
+    before do
+      WebMock.stub_request(:get, "https://athletedataservice.azurewebsites.net/summary")
+             .with(
+               headers: {
+                 "Authorization" => "Bearer #{access_token}",
+                 'Accept' => '*/*',
+                 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                 'Content-Type' => 'application/json',
+                 'User-Agent' => 'Faraday v1.10.0'
+               }
+             )
+             .to_return(status: 200, body: File.read(argument_file), headers: {})
+    end
+
+    it("Get average of summary") do
+      response = client.get_all_data_with_average_summary
+      expect(response[0]).to have_key(:average)
     end
   end
 end
