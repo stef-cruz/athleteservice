@@ -32,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('byebug')
   spec.add_development_dependency('webmock', '~> 3.0')
   spec.add_development_dependency('simplecov', '~> 0.15')
+  spec.add_development_dependency('rubocop', '~> 1.31.2')
 end

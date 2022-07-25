@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'byebug'
 require 'logger'
 
 module Kitman
   module AthleteService
+    # Get token and init connection to the API
     module Connection
-
-      def get_token
+      def access_token
         conn = Faraday.new(url: 'https://dev-0erpan4x.us.auth0.com/oauth/token',
-                           headers: {'Content-Type' => 'application/json'}
-        ) do |faraday|
+                           headers: { 'Content-Type' => 'application/json' }) do |faraday|
           faraday.response(:logger, ::Logger.new($stdout), bodies: true)
         end
 
@@ -25,11 +26,10 @@ module Kitman
       end
 
       def connection
-        jwt_token = get_token
-        conn ||= Faraday.new(url: ::Kitman::AthleteService::Constants::API_ENDPOINT.to_s,
-                             headers: {"Content-Type" => "application/json",
-                                       "Authorization" => "Bearer #{jwt_token}"},
-        ) do |faraday|
+        jwt_token = access_token
+        Faraday.new(url: ::Kitman::AthleteService::Constants::API_ENDPOINT.to_s,
+                    headers: { 'Content-Type' => 'application/json',
+                               'Authorization' => "Bearer #{jwt_token}" }) do |faraday|
           faraday.response(:logger, ::Logger.new($stdout), bodies: true)
         end
       end
