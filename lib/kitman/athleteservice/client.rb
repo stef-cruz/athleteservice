@@ -8,21 +8,22 @@ require 'faraday_middleware'
 require 'byebug'
 require 'json'
 
-module AthleteService
-  # Initialize API call
-  class Client
-    include(::Kitman::AthleteService::Connection)
-    include(::Kitman::AthleteService::Constants)
-    include(::Kitman::AthleteService::Apis::Athlete)
+module Kitman
+  module AthleteService
+    # Initialize API call
+    class Client
+      include(::Kitman::AthleteService::Connection)
+      include(::Kitman::AthleteService::Constants)
+      include(::Kitman::AthleteService::Apis::Athlete)
 
-    attr_reader(:client_id, :client_secret)
+      attr_reader(:client_id, :client_secret)
 
-    def initialize(client_id:, client_secret:)
-      raise Exception, 'Please ensure credentials are correct.' if client_id.empty? || client_secret.empty?
+      def initialize(client_id:, client_secret:)
+        raise Exception, 'Please ensure credentials are correct.' if client_id.empty? || client_secret.empty?
 
-      @client_id = client_id
-      @client_secret = client_secret
+        @client_id = client_id
+        @client_secret = client_secret
+      end
     end
   end
 end
-
