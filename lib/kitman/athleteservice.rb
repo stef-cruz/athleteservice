@@ -5,6 +5,8 @@ require 'athleteservice/constants'
 require 'athleteservice/client'
 require 'athleteservice/apis/athlete'
 
-module AthleteService
-  class Error < StandardError; end
+module Kitman
+  module AthleteService
+    class Error < StandardError; end
+  end
 end
