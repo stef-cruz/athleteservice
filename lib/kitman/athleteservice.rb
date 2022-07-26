@@ -1,7 +1,5 @@
 require "athleteservice/version"
 
-module Kitman
-  module AthleteService
-    class Error < StandardError; end
-  end
+module AthleteService
+  class Error < StandardError; end
 end
