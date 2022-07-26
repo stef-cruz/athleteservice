@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require './lib/kitman/athleteservice/constants'
-require './lib/kitman/athleteservice/apis/athlete'
-require './lib/kitman/athleteservice/connection'
+require './lib/kitman/athlete_service/constants'
+require './lib/kitman/athlete_service/apis/athlete'
+require './lib/kitman/athlete_service/connection'
 require 'faraday'
 require 'faraday_middleware'
 require 'byebug'
 require 'json'
 
 module Kitman
-  module AthleteService
+  module AthleteServiceAPI
     # Initialize API call
     class Client
       include(::Kitman::AthleteService::Connection)
