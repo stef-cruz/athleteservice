@@ -1,4 +1,4 @@
-require_relative 'lib/kitman/athleteservice/version'
+require_relative 'lib/athleteservice/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "athleteservice"
