@@ -14,7 +14,7 @@ Gem to get data from AthleteService API.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'athleteservice'
+gem 'athlete_service'
 ```
 
 And then execute:
