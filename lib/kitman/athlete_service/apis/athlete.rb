@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Kitman
-  module AthleteService
+  module AthleteServiceAPI
     module Apis
       # Service to get data from the API
       module Athlete
         # To test the methods:
         # 1. Load client.rb and athlete.rb files in irb
         # 2. Instantiate the client class,
-        # i.e. client = Kitman::AthleteService::Client.new(client_id:'x', client_secret:'x')
+        # i.e. client = Kitman::AthleteServiceAPI::Client.new(client_id:'x', client_secret:'x')
         # 3. Call all_athletes method in client class, i.e. client.all_athletes
 
         def all_athletes

@@ -2,7 +2,7 @@ require_relative 'lib/kitman/athlete_service/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "athlete_service"
-  spec.version       = Kitman::AthleteService::VERSION
+  spec.version       = Kitman::AthleteServiceAPI::VERSION
   spec.authors       = ["stef-cruz"]
   spec.email         = ["scruz@kitmanlabs.com"]
 

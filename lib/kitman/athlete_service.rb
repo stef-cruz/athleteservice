@@ -6,7 +6,7 @@ require 'athlete_service/client'
 require 'athlete_service/apis/athlete'
 
 module Kitman
-  module AthleteService
+  module AthleteServiceAPI
     class Error < StandardError; end
   end
 end

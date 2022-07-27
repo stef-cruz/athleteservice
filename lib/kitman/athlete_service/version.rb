@@ -1,5 +1,5 @@
 module Kitman
-  module AthleteService
-    VERSION = '0.1.9'
+  module AthleteServiceAPI
+    VERSION = '0.1.10'
   end
 end

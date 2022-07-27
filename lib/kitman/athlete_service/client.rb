@@ -12,9 +12,9 @@ module Kitman
   module AthleteServiceAPI
     # Initialize API call
     class Client
-      include(::Kitman::AthleteService::Connection)
-      include(::Kitman::AthleteService::Constants)
-      include(::Kitman::AthleteService::Apis::Athlete)
+      include(::Kitman::AthleteServiceAPI::Connection)
+      include(::Kitman::AthleteServiceAPI::Constants)
+      include(::Kitman::AthleteServiceAPI::Apis::Athlete)
 
       attr_reader(:client_id, :client_secret)
 

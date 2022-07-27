@@ -4,7 +4,7 @@ require 'byebug'
 require 'logger'
 
 module Kitman
-  module AthleteService
+  module AthleteServiceAPI
     # Get token and init connection to the API
     module Connection
       def access_token
@@ -27,7 +27,7 @@ module Kitman
 
       def connection
         jwt_token = access_token
-        Faraday.new(url: ::Kitman::AthleteService::Constants::API_ENDPOINT.to_s,
+        Faraday.new(url: ::Kitman::AthleteServiceAPI::Constants::API_ENDPOINT.to_s,
                     headers: { 'Content-Type' => 'application/json',
                                'Authorization' => "Bearer #{jwt_token}" }) do |faraday|
           faraday.response(:logger, ::Logger.new($stdout), bodies: true)

@@ -3,7 +3,7 @@
 Gem to get data from AthleteService API.
 
 ```ruby
-    client = Kitman::AthleteService::Client.new(
+    client = Kitman::AthleteServiceAPI::Client.new(
          client_id: 'CLIENT_ID',
          client_secret: 'CLIENT_SECRET'
     )

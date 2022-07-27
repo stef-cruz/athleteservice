@@ -1,8 +1,8 @@
 require 'spec_helper'
-require './lib/kitman/athleteservice/client'
+require './lib/kitman/athlete_service/client'
 require 'byebug'
 
-RSpec.describe(::Kitman::AthleteService::Client) do
+RSpec.describe(::Kitman::AthleteServiceAPI::Client) do
   let(:client_id) { 'ID/abcdefghij' }
   let(:client_secret) { 'SECRET/abcdefghij' }
   let(:access_token) { 'TOKEN/abcdefghij' }
