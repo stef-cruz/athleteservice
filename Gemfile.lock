@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    athlete_service_api (0.1.10)
+    athlete_service_api (0.1.11)
 
 GEM
   remote: https://rubygems.org/
@@ -102,3 +102,6 @@ DEPENDENCIES
   rubocop (~> 1.31.2)
   simplecov (~> 0.15)
   webmock (~> 3.0)
+
+BUNDLED WITH
+   2.1.4
