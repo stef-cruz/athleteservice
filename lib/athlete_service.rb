@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'athlete_service/version'
-require 'athlete_service/constants'
-require 'athlete_service/client'
-require 'athlete_service/apis/athlete'
-
 module AthleteServiceAPI
   class Error < StandardError; end
+  autoload :Constants, 'athlete_service/constants'
+  autoload :AthletesAPI, 'athlete_service/apis/athlete'
+  autoload :Connection, 'athlete_service/connection'
 end
