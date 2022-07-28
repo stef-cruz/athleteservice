@@ -26,11 +26,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency('faraday', '~> 1.7')
   # faraday_middleware converts json into ruby hash automatically. No need to write json.parse
-  spec.add_development_dependency('faraday_middleware', '~> 1.1')
   spec.add_development_dependency('byebug')
   spec.add_development_dependency('webmock', '~> 3.0')
   spec.add_development_dependency('simplecov', '~> 0.15')
   spec.add_development_dependency('rubocop', '~> 1.31.2')
+  spec.add_dependency "faraday"
 end

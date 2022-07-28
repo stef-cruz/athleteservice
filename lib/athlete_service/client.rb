@@ -4,7 +4,6 @@ require './lib/athlete_service/constants'
 require './lib/athlete_service/apis/athlete'
 require './lib/athlete_service/connection'
 require 'faraday'
-require 'faraday_middleware'
 require 'byebug'
 require 'json'
 
