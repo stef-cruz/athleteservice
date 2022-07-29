@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    athlete_service_api (0.1.11)
+    athlete_service (0.1.12)
       faraday
 
 GEM
@@ -72,7 +72,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  athlete_service_api!
+  athlete_service!
   byebug
   rake (~> 12.0)
   rspec (~> 3.0)
@@ -80,5 +80,3 @@ DEPENDENCIES
   simplecov (~> 0.15)
   webmock (~> 3.0)
 
-BUNDLED WITH
-   2.1.4

@@ -1,7 +1,7 @@
 require_relative 'lib/athlete_service/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "athlete_service_api"
+  spec.name          = "athlete_service"
   spec.version       = ::AthleteServiceAPI::VERSION
   spec.authors       = ["stef-cruz"]
   spec.email         = ["scruz@kitmanlabs.com"]
